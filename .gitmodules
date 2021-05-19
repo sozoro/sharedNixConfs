@@ -1,0 +1,3 @@
+[submodule "configs/xmonad_hs"]
+	path = configs/xmonad_hs
+	url = https://github.com/sozoro/xmonad_hs.git
