@@ -14,5 +14,5 @@ in
       };
     };
 
-    programs.vim.plugins.start = [ pkgs.myVimPlugins."${packageName}" ];
+    programs.vim.plugins.start = if install then [ pkgs.myVimPlugins."${packageName}" ] else [];
   }
