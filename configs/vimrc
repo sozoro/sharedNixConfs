@@ -1,0 +1,58 @@
+filetype off
+filetype plugin indent off
+
+set isk+=-
+set isk+=+
+set isk+=*
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set hidden
+set list
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+set backspace=indent,eol,start
+set cursorline
+set autoindent
+set smartindent
+set noequalalways
+set ruler
+set fillchars=vert:\│
+set clipboard^=unnamedplus
+set display=lastline
+" set textwidth=80
+
+imap <silent> jj <ESC>
+cmap vs@ vsp
+cmap vsp@ vsp
+
+syntax on
+
+colorscheme evening
+highlight Normal           ctermbg=none
+highlight Nontext          ctermbg=none
+highlight Folded           ctermbg=none
+highlight FoldedColumn     ctermbg=none
+highlight CursorLine       cterm=none      ctermbg=234
+highlight StatusLine       cterm=underline ctermbg=none ctermfg=24
+highlight StatusLineNC     cterm=underline ctermbg=none ctermfg=8
+highlight StatusLineTerm   cterm=underline ctermbg=none ctermfg=24
+highlight StatusLineTermNC cterm=underline ctermbg=none ctermfg=8
+highlight VertSplit        cterm=none      ctermfg=8
+highlight SpecialKey       ctermfg=8
+highlight Special          ctermfg=9
+highlight Folded           ctermfg=6
+highlight Type             ctermfg=2
+highlight PreProc          ctermfg=4
+highlight Visual           ctermbg=8
+highlight ErrorMsg         ctermfg=1 ctermbg=none
+highlight ModeMsg          ctermfg=8
+
+
+let maplocalleader = "\\"
+
+nnoremap U :MundoToggle<CR>
+
+command! TerminalZsh terminal ++close ++curwin zsh
+
+filetype plugin indent on
