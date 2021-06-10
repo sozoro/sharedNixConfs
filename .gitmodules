@@ -1,3 +1,6 @@
 [submodule "configs/xmonad_hs"]
 	path = configs/xmonad_hs
 	url = https://github.com/sozoro/xmonad_hs.git
+[submodule "packages/vimPlugin/pandoc-markdown-table-formatter"]
+	path = packages/vimPlugin/pandoc-markdown-table-formatter
+	url = https://github.com/sozoro/pandoc-markdown-table-formatter.git
