@@ -6,7 +6,7 @@ let
 in
   { nixpkgs.config = {
       packageOverrides = oldpkgs: let newpkgs = oldpkgs.pkgs; in{
-        myVimPlugins."${packageName}" = newpkgs.vimUtils.buildVimPluginFrom2Nix {
+        "myVimPlugins_${packageName}" = newpkgs.vimUtils.buildVimPluginFrom2Nix {
           name         = packageName;
           src          = packagePath;
           dependencies = [];
@@ -14,5 +14,5 @@ in
       };
     };
 
-    programs.vim.plugins.start = if install then [ pkgs.myVimPlugins."${packageName}" ] else [];
+    programs.vim.plugins.start = if install then [ pkgs."myVimPlugins_${packageName}" ] else [];
   }
