@@ -4,3 +4,6 @@
 [submodule "packages/vimPlugin/pandoc-markdown-table-formatter"]
 	path = packages/vimPlugin/pandoc-markdown-table-formatter
 	url = https://github.com/sozoro/pandoc-markdown-table-formatter.git
+[submodule "packages/vimPlugin/markdown-extra-syntax"]
+	path = packages/vimPlugin/markdown-extra-syntax
+	url = https://github.com/sozoro/markdown-extra-syntax.git
