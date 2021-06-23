@@ -7,3 +7,6 @@
 [submodule "packages/vimPlugin/markdown-extra-syntax"]
 	path = packages/vimPlugin/markdown-extra-syntax
 	url = https://github.com/sozoro/markdown-extra-syntax.git
+[submodule "packages/gene95"]
+	path = packages/gene95
+	url = https://github.com/sozoro/gene95-nix.git
