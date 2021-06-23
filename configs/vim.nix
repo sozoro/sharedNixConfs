@@ -1,20 +1,29 @@
 { config, pkgs, lib, ... }:
 let
+  cfg = config.programs.vim;
+
   vimCustomize = start: {
     name = "vim";
     vimrcConfig = {
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = start;
       };
-      customRC = builtins.readFile ./vimrc;
+      customRC = builtins.readFile ./vimrc + cfg.extraConfig;
     };
   };
 in
   { options = with lib; {
-      programs.vim.plugins.start = mkOption {
-        type        = with types; listOf package;
-        default     = [];
-        description = "vim start packages";
+      programs.vim = {
+        plugins.start = mkOption {
+          type        = with types; listOf package;
+          default     = [];
+          description = "vim start packages";
+        };
+        extraConfig = mkOption {
+          type        = types.lines;
+          default     = "";
+          description = "extra vimrc configs";
+        };
       };
     };
 
@@ -38,7 +47,7 @@ in
                   "--with-python-config-dir=${python2}/lib"
                 ];
               buildInputs = old.buildInputs ++ [ python2 ];
-            }))).customize (vimCustomize config.programs.vim.plugins.start))
+            }))).customize (vimCustomize cfg.plugins.start))
 
             # for zip.vim
             pkgs.zip
