@@ -55,4 +55,9 @@ nnoremap U :MundoToggle<CR>
 
 command! TerminalZsh terminal ++close ++curwin zsh
 
+let s:ex_rc = findfile(".vimrc", ".;")
+if len(s:ex_rc) > 0
+  execute "source " . g:ex_rc
+endif
+
 filetype plugin indent on
