@@ -10,7 +10,7 @@ let
     ${xorg.xinit}/bin/startx "${config.services.xserver.displayManager.sessionData.wrapper}" "`${pkgs.gnused}/bin/sed -n -r "s/^Exec=//p" ${xmonadStarter}`"
   '';
 in
-  { imports     = [ ./xmonad.nix ../../configs/xserver.nix ];
+  { imports     = [ ./xmonad.nix ./xserver.nix ];
     environment = {
       systemPackages   = [ xorg.xinit startxmonad ];
       shellAliases.sxm = "startxmonad";
