@@ -77,6 +77,18 @@ let
     <Multi_key> <bar> <o>                         : "⊸"
     <Multi_key> <o> <C>                           : "℃"
     <Multi_key> <o> <F>                           : "℉"
+    <Multi_key> <s> <period>                      : "ṣ"
+    <Multi_key> <S> <period>                      : "Ṣ"
+    <Multi_key> <r> <period>                      : "ṛ"
+    <Multi_key> <R> <period>                      : "Ṛ"
+    <Multi_key> <h> <period>                      : "ḥ"
+    <Multi_key> <H> <period>                      : "Ḥ"
+    <Multi_key> <d> <period>                      : "ḍ"
+    <Multi_key> <D> <period>                      : "Ḍ"
+    <Multi_key> <t> <period>                      : "ṭ"
+    <Multi_key> <T> <period>                      : "Ṭ"
+    <Multi_key> <z> <period>                      : "ẓ"
+    <Multi_key> <Z> <period>                      : "Ẓ"
   '';
 in
   { imports     = [ ./xserver.nix ./fcitx-homeSettings.nix ];
