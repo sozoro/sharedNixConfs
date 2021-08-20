@@ -10,3 +10,6 @@
 [submodule "packages/gene95"]
 	path = packages/gene95
 	url = https://github.com/sozoro/gene95-nix.git
+[submodule "packages/termonad_hs"]
+	path = packages/termonad_hs
+	url = git@github.com:sozoro/termonad_hs.git
