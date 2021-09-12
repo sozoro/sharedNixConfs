@@ -13,3 +13,6 @@
 [submodule "packages/termonad_hs"]
 	path = packages/termonad_hs
 	url = git@github.com:sozoro/termonad_hs.git
+[submodule "packages/vimPlugin/vim-ghci"]
+	path = packages/vimPlugin/vim-ghci
+	url = git@github.com:sozoro/vim-ghci.git
