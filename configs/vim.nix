@@ -41,7 +41,8 @@ in
             # supporting both Python 2 and Python 3 causes a problem
             ((vimUtils.makeCustomizable
             (overrideDerivation (vim_configurable.override {
-              guiSupport       = "false";
+              # clipboard feature requires guiSupport
+              # guiSupport       = "false";
               multibyteSupport = true;
               pythonSupport    = false;
             }) (old: {
