@@ -90,6 +90,7 @@ let
     <Multi_key> <z> <period>                      : "ẓ"
     <Multi_key> <Z> <period>                      : "Ẓ"
   '';
+  # 「"」 + 「,」 = „
 in
   { imports     = [ ./xserver.nix ./fcitx-homeSettings.nix ];
     environment = {

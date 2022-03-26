@@ -18,7 +18,7 @@ set smartindent
 set noequalalways
 set ruler
 set fillchars=vert:\│
-set clipboard^=unnamedplus
+" set clipboard^=unnamedplus
 set display=lastline
 " set textwidth=80
 
