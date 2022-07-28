@@ -16,3 +16,6 @@
 [submodule "packages/vimPlugin/vim-ghci"]
 	path = packages/vimPlugin/vim-ghci
 	url = git@github.com:sozoro/vim-ghci.git
+[submodule "packages/non-variable-noto-fonts"]
+	path = packages/non-variable-noto-fonts
+	url = git@github.com:sozoro/non-variable-noto-fonts.nix.git
