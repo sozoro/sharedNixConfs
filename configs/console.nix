@@ -3,7 +3,9 @@
   services.xserver.layout = "jp";
   console                 = {
     useXkbConfig = true;
-    font         = "latarcyrheb-sun32";
+    # font         = "latarcyrheb-sun32";
     earlySetup   = true;
   };
+
+  boot.initrd.kernelModules = [ "i915" ];
 }

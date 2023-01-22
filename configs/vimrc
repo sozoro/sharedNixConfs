@@ -18,7 +18,7 @@ set smartindent
 set noequalalways
 set ruler
 set fillchars=vert:\│
-set clipboard^=unnamedplus
+" set clipboard^=unnamedplus
 set display=lastline
 " set textwidth=80
 
@@ -33,6 +33,7 @@ highlight Normal           ctermbg=none
 highlight Nontext          ctermbg=none
 highlight Folded           ctermbg=none
 highlight FoldedColumn     ctermbg=none
+highlight EndOfBuffer      ctermbg=none
 highlight CursorLine       cterm=none      ctermbg=234
 highlight StatusLine       cterm=underline ctermbg=none ctermfg=24
 highlight StatusLineNC     cterm=underline ctermbg=none ctermfg=8

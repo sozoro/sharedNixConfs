@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 let
-  packagePath = ./japanese;
+  packagePath = ./vim-ghci;
   packageName = lib.last (builtins.split "/" (toString packagePath));
-  install     = "opt";
+  install     = true;
 in
   { nixpkgs.config = {
       packageOverrides = oldpkgs: let newpkgs = oldpkgs.pkgs; in{
@@ -15,8 +15,5 @@ in
       };
     };
 
-    programs.vim.plugins = {
-      start = if install == "start" then [ pkgs."myVimPlugins_${packageName}" ] else [];
-      opt   = if install == "opt"   then [ pkgs."myVimPlugins_${packageName}" ] else [];
-    };
+    programs.vim.plugins.start = if install then [ pkgs."myVimPlugins_${packageName}" ] else [];
   }
