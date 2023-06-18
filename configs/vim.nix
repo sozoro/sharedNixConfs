@@ -60,6 +60,10 @@ in
 
           ];
         };
+
+        nixpkgs.config.permittedInsecurePackages = [
+          "python-2.7.18.6"
+        ];
       }
 
       { programs.vim.plugins.start = with pkgs.vimPlugins; [

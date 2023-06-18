@@ -25,7 +25,7 @@ let
   '');
 in with lib;
   { options = {
-      i18n.inputMethod.fcitx.homeSettings = with types; mkOption {
+      i18n.inputMethod.fcitx5.homeSettings = with types; mkOption {
         type        = attrsOf (attrsOf str);
         default     = {};
         example     = {
@@ -48,7 +48,7 @@ in with lib;
         '';
       })
 
-      { i18n.inputMethod.fcitx.homeSettings = {
+      { i18n.inputMethod.fcitx5.homeSettings = {
           "conf/fcitx-xkb.config" = {
             OverrideSystemXKBSettings = "False";
           };
