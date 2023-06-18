@@ -14,6 +14,7 @@ in
         # noto-fonts-cjk
         non-variable-noto-fonts.noto-fonts
         non-variable-noto-fonts.noto-fonts-cjk-sans
+        non-variable-noto-fonts.noto-fonts-cjk-serif
         meslo-lg
         customIosevka
         mplus-outline-fonts.githubRelease
