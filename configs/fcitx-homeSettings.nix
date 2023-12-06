@@ -1,47 +1,59 @@
 { config, pkgs, lib, ... }:
 let
-  cfg   = config.i18n.inputMethod.fcitx.homeSettings;
-  fcitx = config.i18n.inputMethod.package;
+  cfg   = config.i18n.inputMethod.fcitx5.homeSettings;
+  fcitx5 = config.i18n.inputMethod.package;
 
-  sedSetting = file: item: value: ''
-    ${pkgs.gnused}/bin/sed -i -e "s/^#\?[ ]*${item}[ ]*=.*/${item}=${value}/" ${file}
+  fcitxConfDir = "$HOME/.config/fcitx5";
+
+  writeConf = file: conf: ''
+    mkdir -p $(dirname "${file}")
+    echo "${conf}" > "${file}"
   '';
+
   setupCommand = "fcitx-homeSettings";
   fcitx-homeSettings = with lib; pkgs.writeShellScriptBin setupCommand (''
-    confDir=$HOME/.config/fcitx
+    confDir=${fcitxConfDir}
     if [ ! -d $confDir ]; then
       echo running fcitx to generate default settings
-      ${fcitx}/bin/fcitx -d
+      ${fcitx5}/bin/fcitx5 -d
       sleep 0.5
     fi
     pushd $confDir
   ''
   +
-  concatStrings (flatten (mapAttrsToList (file: mapAttrsToList (sedSetting file)) cfg))
+  concatStrings (mapAttrsToList writeConf cfg)
   +
   ''
     popd
-    ${fcitx}/bin/fcitx-remote -r
+    ${fcitx5}/bin/fcitx5-remote -r
   '');
 in with lib;
   { options = {
       i18n.inputMethod.fcitx5.homeSettings = with types; mkOption {
-        type        = attrsOf (attrsOf str);
+        type        = attrsOf lines;
         default     = {};
         example     = {
-          "conf/fcitx-xkb.config" = {
-            OverrideSystemXKBSettings = "False";
-          };
-          "config" = {
-            SwitchKey = "Disabled";
-          };
+          "conf/xcb.conf" = ''
+            Allow Overriding System XKB Settings=False
+          '';
+          "config" = ''
+            [Hotkey/TriggerKeys]
+            0=Control+space
+
+            [Hotkey/ActivateKeys]
+            0=Henkan
+            1=Hiragana_Katakana
+
+            [Hotkey/DeactivateKeys]
+            0=Muhenkan
+          '';
         };
-        description = "setting files in $HOME/.config/fcitx";
+        description = "setting files in ${fcitxConfDir}";
       };
     };
 
     config = mkMerge [
-      (mkIf (config.i18n.inputMethod.enabled == "fcitx") {
+      (mkIf (config.i18n.inputMethod.enabled == "fcitx5") {
         environment.systemPackages = [ fcitx-homeSettings ];
         services.xserver.displayManager.sessionCommands = mkOrder 1000 ''
           ${fcitx-homeSettings}/bin/${setupCommand}
@@ -49,9 +61,9 @@ in with lib;
       })
 
       { i18n.inputMethod.fcitx5.homeSettings = {
-          "conf/fcitx-xkb.config" = {
-            OverrideSystemXKBSettings = "False";
-          };
+          "conf/xcb.conf" = ''
+            Allow Overriding System XKB Settings=False
+          '';
         };
       }
     ];

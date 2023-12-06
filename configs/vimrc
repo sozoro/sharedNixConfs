@@ -61,4 +61,8 @@ if len(s:ex_rc) > 0
   execute "source " . s:ex_rc
 endif
 
+autocmd Filetype tex setlocal foldmarker=@{{{,@}}}
+autocmd Filetype tex setlocal foldmethod=marker
+autocmd Filetype tex syntax match texStatement "\\[a-zA-Z_:@]\+"
+
 filetype plugin indent on

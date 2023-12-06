@@ -12,12 +12,13 @@ in
       fonts = with pkgs; [
         # noto-fonts
         # noto-fonts-cjk
-        #18 non-variable-noto-fonts.noto-fonts
-        #18 non-variable-noto-fonts.noto-fonts-cjk-sans
-        #18 non-variable-noto-fonts.noto-fonts-cjk-serif
+        non-variable-noto-fonts.noto-fonts
+        non-variable-noto-fonts.noto-fonts-cjk-sans
+        non-variable-noto-fonts.noto-fonts-cjk-serif
         meslo-lg
         customIosevka
         mplus-outline-fonts.githubRelease
+        ibm-plex
         # (import ./iosevkaNotoCJK.nix { inherit pkgs; })
       ];
       fontconfig = {
