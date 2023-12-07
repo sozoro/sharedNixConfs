@@ -64,5 +64,7 @@ endif
 autocmd Filetype tex setlocal foldmarker=@{{{,@}}}
 autocmd Filetype tex setlocal foldmethod=marker
 autocmd Filetype tex syntax match texStatement "\\[a-zA-Z_:@]\+"
+autocmd Filetype tex setlocal iskeyword+=:
+autocmd Filetype tex let g:tex_no_math=0
 
 filetype plugin indent on
