@@ -71,5 +71,12 @@ in
           vim-mundo
         ];
       }
+
+      # Python2 is marked as insecure because Python 2.7 has reached its end of life after 2020-01-01.
+      {
+        nixpkgs.config.permittedInsecurePackages = [
+          "python-2.7.18.8"
+        ];
+      }
     ];
   }

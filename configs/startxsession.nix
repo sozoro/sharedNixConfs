@@ -18,4 +18,5 @@ in
     environment = {
       systemPackages   = [ xorg.xinit startxsession ];
     };
+    services.xserver.displayManager.startx.enable = true;
   }

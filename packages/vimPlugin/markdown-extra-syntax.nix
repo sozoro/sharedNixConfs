@@ -6,7 +6,7 @@ let
 in
   { nixpkgs.config = {
       packageOverrides = oldpkgs: let newpkgs = oldpkgs.pkgs; in{
-        "myVimPlugins_${packageName}" = newpkgs.vimUtils.buildVimPluginFrom2Nix rec {
+        "myVimPlugins_${packageName}" = newpkgs.vimUtils.buildVimPlugin rec {
           pname        = packageName;
           name         = pname;
           src          = packagePath;
