@@ -2,7 +2,7 @@
 with pkgs; with lib; with lists;
 let
   noneXmonad    = "none+xmonad";
-  sessions      = config.services.xserver.displayManager.sessionPackages;
+  sessions      = config.services.displayManager.sessionPackages;
   xmonads       = filter (x: hasPrefix noneXmonad x.name) sessions;
   xmonad        = assert assertMsg (xmonads != []) "Xmonad is not enabled"; head xmonads;
   xmonadStarter = "${xmonad}/share/xsessions/${noneXmonad}.desktop";
