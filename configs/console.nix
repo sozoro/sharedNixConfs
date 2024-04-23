@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 { i18n.defaultLocale      = "en_US.UTF-8";
-  services.xserver.layout = "jp";
+  services.xserver.xkb.layout = "jp";
   console                 = {
     useXkbConfig = true;
     # font         = "latarcyrheb-sun32";

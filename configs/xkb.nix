@@ -152,7 +152,7 @@ in
       };
     };
     services.xserver = {
-      xkbOptions = "terminate:ctrl_alt_bksp,ctrl:swapcaps,compose:ralt";
+      xkb.options = "terminate:ctrl_alt_bksp,ctrl:swapcaps,compose:ralt";
 
       # this priority should be bigger than fcitx-homeSettings's one
       displayManager.sessionCommands = lib.mkOrder 1100 ''

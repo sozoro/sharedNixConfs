@@ -9,7 +9,7 @@ in
     ];
 
     fonts = {
-      fonts = with pkgs; [
+      packages = with pkgs; [
         # noto-fonts
         # noto-fonts-cjk
         non-variable-noto-fonts.noto-fonts
@@ -25,11 +25,12 @@ in
         defaultFonts = {
           monospace = [
             "Custom Iosevka"
+            "IBM Plex Mono"
             "Meslo LG S"
             "Noto Sans Mono"
           ];
-          serif     = [ "Noto Sans" ];
-          sansSerif = [ "Noto Sans" ];
+          serif     = lib.mkOrder 75 [ "IBM Plex Serif" "Noto Sans" ];
+          sansSerif = lib.mkOrder 75 [ "IBM Plex Sans" "Noto Sans" ];
         };
         allowBitmaps = false;
         antialias    = true;
