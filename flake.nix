@@ -2,10 +2,11 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url                 = "github:nixos/nixpkgs?ref=nixos-unstable";
+    non-variable-noto-fonts.url = "github:sozoro/non-variable-noto-fonts.nix";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, non-variable-noto-fonts }: {
     configs = {
       # ls -1 ./configs | grep '\.nix$' | awk '{ sub(".nix", "") }{ print $1" = ./configs/"$1".nix;" }'
       adb = ./configs/adb.nix;
