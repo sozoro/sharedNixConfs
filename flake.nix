@@ -6,6 +6,6 @@
   };
 
   outputs = { self, nixpkgs }: {
-
+    configs = ./configs;
   };
 }
