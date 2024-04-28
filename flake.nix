@@ -6,8 +6,6 @@
   };
 
   outputs = { self, nixpkgs }: {
-    configs = {
-      uefi = ./configs/uefi.nix;
-    };
+    configs = import ./configs;
   };
 }
