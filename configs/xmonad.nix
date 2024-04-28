@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, xmonad_hs, ... }:
 { environment.systemPackages = with pkgs; [ dmenu xorg.xprop ];
   services = {
     displayManager = {
@@ -16,7 +16,7 @@
       windowManager.xmonad = {
         enable                 = true;
         enableContribAndExtras = true;
-        config                 = ./xmonad_hs/xmonad.hs;
+        config                 = xmonad_hs.xmonad_hs;
       };
     };
   };
