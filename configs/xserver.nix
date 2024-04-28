@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 let
   xresources = with config.fonts.fontconfig; pkgs.writeText "Xresources" ''
-    Xcursor*size: 30
   '';
 in
   { imports = [ ./xmonad.nix ];
