@@ -3,9 +3,7 @@ let
   xresources = with config.fonts.fontconfig; pkgs.writeText "Xresources" ''
   '';
 in
-  { # imports = [ ./xmonad.nix ];
-
-    environment.systemPackages = [ pkgs.picom ];
+  { environment.systemPackages = [ pkgs.picom ];
     services.picom = {
       enable        = true;
       shadow        = true;
