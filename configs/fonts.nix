@@ -1,4 +1,4 @@
-{ config, pkgs, lib, non-variable-noto-fonts, ... }:
+{ non-variable-noto-fonts }: { config, pkgs, lib, ... }:
 let
   customIosevka = import ./iosevka.nix { inherit pkgs; };
   # DPI for 2560x1440 display
