@@ -10,6 +10,7 @@
       # ls -1 ./configs | grep '\.nix$' | awk '{ sub(".nix", "") }{ print $1" = ./configs/"$1".nix;" }'
       adb = ./configs/adb.nix;
       autoUpgrade = ./configs/autoUpgrade.nix;
+      commonPackages = ./configs/commonPackages.nix;
       console = ./configs/console.nix;
       cursor = ./configs/cursor.nix;
       enableUnfreeFirmwares = ./configs/enableUnfreeFirmwares.nix;
@@ -46,7 +47,6 @@
 
     packages = {
       # ls -1 ./packages | grep '\.nix$' | awk '{ sub(".nix", "") }{ print $1" = ./packages/"$1".nix;" }' 
-
       gene95 = ./packages/gene95.nix;
       non-variable-noto-fonts = ./packages/non-variable-noto-fonts.nix;
       pleroma-tools = ./packages/pleroma-tools.nix;
