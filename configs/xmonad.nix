@@ -1,4 +1,4 @@
-{ config, pkgs, lib, xmonad_hs, ... }:
+{ xmonad_hs, ... }: { config, pkgs, lib, ... }:
 { environment.systemPackages = with pkgs; [ dmenu xorg.xprop ];
   services = {
     displayManager = {
