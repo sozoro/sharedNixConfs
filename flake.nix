@@ -25,7 +25,7 @@
       gtk3QogirTheme = ./configs/gtk3QogirTheme.nix;
       hiDPI = ./configs/hiDPI.nix;
       ifuse = ./configs/ifuse.nix;
-      iosevka = ./configs/iosevka.nix;
+      #iosevka = ./configs/iosevka.nix;
       logind = ./configs/logind.nix;
       mplayer = ./configs/mplayer.nix;
       nixGCKeepOutputs = ./configs/nixGCKeepOutputs.nix;
