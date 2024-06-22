@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  customIosevka = import ./iosevka.nix { inherit pkgs; };
+  # customIosevka = import ./iosevka.nix { inherit pkgs; };
   # DPI for 2560x1440 display
   dpi = 160;
 in
@@ -9,7 +9,7 @@ in
         # noto-fonts
         # noto-fonts-cjk
         meslo-lg
-        customIosevka
+        # customIosevka
         mplus-outline-fonts.githubRelease
         ibm-plex
         # (import ./iosevkaNotoCJK.nix { inherit pkgs; })
