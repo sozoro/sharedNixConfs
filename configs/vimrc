@@ -54,7 +54,7 @@ let maplocalleader = "\\"
 
 nnoremap U :MundoToggle<CR>
 
-command! TerminalZsh terminal ++close ++curwin zsh
+command! Terminal terminal ++close ++curwin
 
 let s:ex_rc = findfile(".vimrc", ".;")
 if len(s:ex_rc) > 0
