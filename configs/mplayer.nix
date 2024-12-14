@@ -11,7 +11,7 @@ in
       jackaudioSupport = true;
       bluraySupport    = false;
     }).overrideAttrs (attrs: oldAttrs: {
-      patches = oldAttrs.patches ++ [ patch ];
+      patches = (oldAttrs.patches or []) ++ [ patch ];
     });
   };
 
