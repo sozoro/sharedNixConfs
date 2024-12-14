@@ -1,7 +1,7 @@
 { pkgs, ... }:
 { nixpkgs.config.packageOverrides = oldpkgs: let newpkgs = oldpkgs.pkgs; in {
     mplayer = oldpkgs.mplayer.override {
-      # jackaudioSupport = true;
+      jackaudioSupport = true;
       # bluraySupport    = false;
     };
   };
