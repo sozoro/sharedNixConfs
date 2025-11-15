@@ -3,7 +3,7 @@ let
   fcitx5 = config.i18n.inputMethod.package;
 in
   { imports                    = [ ./xserver.nix ];
-    environment.systemPackages = [ pkgs.fcitx5-configtool ];
+    environment.systemPackages = [ pkgs.qt6Packages.fcitx5-configtool ];
     i18n.inputMethod           = {
       enabled       = "fcitx5";
       # fcitx.engines = with pkgs.fcitx-engines; [ mozc ] ;
