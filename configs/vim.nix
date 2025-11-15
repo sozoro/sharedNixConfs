@@ -40,7 +40,7 @@ in
             # vim with not Python 3 but Python 2 for agda-vim plugin
             # supporting both Python 2 and Python 3 causes a problem
             ((vimUtils.makeCustomizable
-            (overrideDerivation (vim_configurable.override {
+            (overrideDerivation (vim-full.override {
               # clipboard feature requires guiSupport
               # guiSupport       = "false";
               multibyteSupport = true;
