@@ -5,7 +5,8 @@ in
   { imports                    = [ ./xserver.nix ];
     environment.systemPackages = [ pkgs.qt6Packages.fcitx5-configtool ];
     i18n.inputMethod           = {
-      enabled       = "fcitx5";
+      enable = true;
+      type   = "fcitx5";
       # fcitx.engines = with pkgs.fcitx-engines; [ mozc ] ;
       fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ] ;
     };

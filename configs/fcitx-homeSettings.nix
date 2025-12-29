@@ -53,7 +53,7 @@ in with lib;
     };
 
     config = mkMerge [
-      (mkIf (config.i18n.inputMethod.enabled == "fcitx5") {
+      (mkIf (config.i18n.inputMethod.enable && config.i18n.inputMethod.type == "fcitx5") {
         environment.systemPackages = [ fcitx-homeSettings ];
         services.xserver.displayManager.sessionCommands = mkOrder 1000 ''
           ${fcitx-homeSettings}/bin/${setupCommand}
