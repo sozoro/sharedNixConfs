@@ -60,10 +60,6 @@ in
 
           ];
         };
-
-        nixpkgs.config.permittedInsecurePackages = [
-          "python-2.7.18.6"
-        ];
       }
 
       { programs.vim.plugins.start = with pkgs.vimPlugins; [
@@ -75,7 +71,9 @@ in
       # Python2 is marked as insecure because Python 2.7 has reached its end of life after 2020-01-01.
       {
         nixpkgs.config.permittedInsecurePackages = [
+          "python-2.7.18.6"
           "python-2.7.18.8"
+          "python-2.7.18.12"
         ];
       }
     ];
