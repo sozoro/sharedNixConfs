@@ -43,6 +43,7 @@
       xserver = ./configs/xserver.nix;
       xsettingsd = ./configs/xsettingsd.nix;
       zoom-us = ./configs/zoom-us.nix;
+      bash = ./configs/bash.nix;
     };
 
     packages = {
