@@ -53,6 +53,7 @@
       pleroma-tools = ./packages/pleroma-tools.nix;
       rust-u2f = ./packages/rust-u2f.nix;
       termonad = ./packages/termonad.nix;
+      vim-colortemplate = ./packages/vimPlugin/vim-colortemplate.nix;
     };
   };
 }
