@@ -1,3 +1,5 @@
+set encoding=utf-8
+scriptencoding utf-8
 filetype off
 filetype plugin indent off
 
@@ -17,54 +19,140 @@ set autoindent
 set smartindent
 set noequalalways
 set ruler
-set fillchars=vert:\│
-" set clipboard^=unnamedplus
 set display=lastline
-" set textwidth=80
+set wildmode=list:longest,full
+set mouse-=a
+set path+=**
+set foldmethod=indent
+set nofoldenable
+set wildignore+=tags
+set wildignorecase
+let maplocalleader = "\\"
+let g:netrw_banner=0
+
+try
+  set fillchars=vert:\│
+catch
+  set fillchars=vert:\|
+endtry
 
 imap <silent> jj <ESC>
-cmap vs@ vsp
-cmap vsp@ vsp
+noremap <C-w>q <Nop>
 
 syntax on
 
-colorscheme evening
-highlight Normal           ctermbg=none
-highlight Nontext          ctermbg=none
-highlight Folded           ctermbg=none
-highlight FoldedColumn     ctermbg=none
-highlight EndOfBuffer      ctermbg=none
-highlight CursorLine       cterm=none      ctermbg=234
-highlight StatusLine       cterm=underline ctermbg=none ctermfg=24
-highlight StatusLineNC     cterm=underline ctermbg=none ctermfg=8
-highlight StatusLineTerm   cterm=underline ctermbg=none ctermfg=24
-highlight StatusLineTermNC cterm=underline ctermbg=none ctermfg=8
-highlight VertSplit        cterm=none      ctermfg=8
-highlight SpecialKey       ctermfg=8
-highlight Special          ctermfg=9
-highlight Folded           ctermfg=6
-highlight Type             ctermfg=2
-highlight PreProc          ctermfg=4
-highlight Visual           ctermbg=8
-highlight ErrorMsg         ctermfg=1 ctermbg=none
-highlight ModeMsg          ctermfg=8
-
-
-let maplocalleader = "\\"
-
-nnoremap U :MundoToggle<CR>
-
-command! Terminal terminal ++close ++curwin
-
-let s:ex_rc = findfile(".vimrc", ".;")
-if len(s:ex_rc) > 0
-  execute "source " . s:ex_rc
+if has('win32') || has('win64')
+  set t_Co=256
+  set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 endif
+
+if v:version > 800
+  set termguicolors
+endif
+
+function! MyHighlights() abort
+  highlight Normal                                         ctermbg=NONE guibg=NONE
+  highlight Nontext                                        ctermbg=NONE guibg=NONE
+  highlight Folded                                         ctermbg=NONE guibg=NONE
+  highlight FoldedColumn                                   ctermbg=NONE guibg=NONE
+  highlight EndOfBuffer                                    ctermbg=NONE guibg=NONE
+  highlight CursorLine       cterm=none      gui=none      ctermbg=234  guibg=#1c1c1c
+  highlight StatusLine       cterm=underline gui=underline ctermbg=NONE guibg=NONE    ctermfg=24 guifg=#005f87
+  highlight StatusLineNC     cterm=underline gui=underline ctermbg=NONE guibg=NONE    ctermfg=8  guifg=#5F6149
+  highlight StatusLineTerm   cterm=underline gui=underline ctermbg=NONE guibg=NONE    ctermfg=24 guifg=#005f87
+  highlight StatusLineTermNC cterm=underline gui=underline ctermbg=NONE guibg=NONE    ctermfg=8  guifg=#5F6149
+  highlight VertSplit        cterm=none      gui=none                                 ctermfg=8  guifg=#5F6149
+  highlight Folded                                                                    ctermfg=6  guifg=Teal
+endfunction
+
+call MyHighlights()
+
+augroup MyHighlights
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * call MyHighlights()
+augroup END
 
 autocmd Filetype tex setlocal foldmarker=@{{{,@}}}
 autocmd Filetype tex setlocal foldmethod=marker
 autocmd Filetype tex syntax match texStatement "\\[a-zA-Z_:@]\+"
 autocmd Filetype tex setlocal iskeyword+=:
 autocmd Filetype tex let g:tex_no_math=0
+autocmd Filetype hsl setlocal tabstop=4
+autocmd Filetype hsl setlocal shiftwidth=4
+
+autocmd Filetype registry setlocal encoding=cp932
+autocmd Filetype dosbatch setlocal encoding=cp932
+
+autocmd Filetype cfg setlocal fileformats=unix,dos
+autocmd Filetype sh setlocal fileformats=unix,dos
+autocmd Filetype yaml setlocal fileformats=unix,dos
+autocmd Filetype text setlocal fileformats=unix,dos
+autocmd Filetype markdown setlocal fileformats=unix,dos
+autocmd Filetype json setlocal fileformats=unix,dos
+autocmd Filetype csv setlocal fileformats=unix,dos
+autocmd Filetype log setlocal fileformats=unix,dos
+
+if has('patch-7.4.006')
+  set directory=~/.vim/tmp/swp
+  set backupdir=~/.vim/tmp/backup
+  set undodir=~/.vim/tmp/undo
+  call mkdir(&l:directory, 'p', 0700)
+  call mkdir(&l:backupdir, 'p', 0700)
+  call mkdir(&l:undodir, 'p', 0700)
+endif
+
+function! ToggleIndentGuides()
+  if exists('b:indent_guides')
+    call matchdelete(b:indent_guides)
+    unlet b:indent_guides
+  else
+    let l:textwidth = max([&l:textwidth, winwidth(0), strwidth(getline('.'))])
+    let l:pos = range(1, l:textwidth, &l:shiftwidth)
+    call map(l:pos, '"\\%" . v:val . "v"')
+    let pat = '\%(\_^\s*\)\@<=\%(' . join(pos, '\|') . '\)\s'
+    let b:indent_guides = matchadd('CursorLine', pat)
+  endif
+endfunction
+
+function! SetTerminalName()
+  let l:current_bufnr = bufnr('%')
+  for l:term_bufnr in term_list()
+    let l:title = term_gettitle(l:term_bufnr)
+    if ! empty(l:title)
+      let l:status = getbufinfo(l:term_bufnr)[0]['hidden'] ? 'H' : 'A'
+      execute 'buffer' l:term_bufnr
+      execute 'file' ('T' . l:status . l:term_bufnr . l:title)
+    endif
+  endfor
+  execute 'buffer' l:current_bufnr
+endfunction
+
+function! QuitHiddenTerminals()
+  let l:current_bufnr = bufnr('%')
+  for l:term_bufnr in term_list()
+    if getbufinfo(l:term_bufnr)[0]['hidden']
+      execute 'bwipeout!' l:term_bufnr
+    endif
+  endfor
+  execute 'buffer' l:current_bufnr
+endfunction
+
+" terminal-api
+function! Tapi_TCD(bufnum, arglist)
+  if a:arglist[1] == '-f'
+    windo execute 'cd' fnameescape(a:arglist[0])
+  else
+    execute 'tcd' fnameescape(a:arglist[0])
+  endif
+endfunction
+
+command! Terminal terminal ++close ++curwin
+command! -bar Scratch new | setlocal buftype=nofile | setlocal bufhidden=wipe
+command! -bar VScratch vertical new | setlocal buftype=nofile | setlocal bufhidden=wipe
+
+let s:ex_rc = findfile('.vimrc', '.;')
+if len(s:ex_rc) > 0
+  execute 'source ' . s:ex_rc
+endif
 
 filetype plugin indent on

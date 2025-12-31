@@ -10,6 +10,7 @@
 
     interactiveShellInit = ''
       export HISTSIZE=10000
+      export SAVEHIST=100000
       bind '"\C-p": history-search-backward'
       bind '"\C-n": history-search-forward'
       bind 'set completion-ignore-case on'
