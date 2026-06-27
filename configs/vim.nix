@@ -50,9 +50,9 @@ in
                 (filter (x: x != "--disable-pythoninterp") old.configureFlags)
                 ++ [
                   "--enable-pythoninterp"
-                  "--with-python-config-dir=${python2}/lib"
+                  #"--with-python-config-dir=${python2}/lib"
                 ];
-              buildInputs = old.buildInputs ++ [ python2 ];
+              #buildInputs = old.buildInputs ++ [ python2 ];
             }))).customize vimCustomize)
 
             # for zip.vim
