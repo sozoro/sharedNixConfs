@@ -48,6 +48,25 @@ endif
 
 if v:version > 800
   set termguicolors
+  let g:terminal_ansi_colors = [
+        \ "#1F1A1A",
+        \ "#FF6B00",
+        \ "#8FFF00",
+        \ "#FFB300",
+        \ "#1AD1FF",
+        \ "#FF2E93",
+        \ "#00FFD1",
+        \ "#F2EFE9",
+        \
+        \ "#8B7E74",
+        \ "#FF9E00",
+        \ "#B5FF00",
+        \ "#FFF000",
+        \ "#66E3FF",
+        \ "#FF6EA7",
+        \ "#66FFE6",
+        \ "#FFFFFF",
+  \ ]
 endif
 
 function! MyHighlights() abort
