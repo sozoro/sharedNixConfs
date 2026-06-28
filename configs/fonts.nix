@@ -39,7 +39,7 @@ in
       };
     };
     services.xserver.displayManager.sessionCommands = ''
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge <<EOF
+      ${pkgs.xrdb}/bin/xrdb -merge <<EOF
          Xft.dpi: ${toString dpi}
       EOF
     '';

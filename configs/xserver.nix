@@ -28,8 +28,8 @@ in
         '';
         displayManager.sessionCommands = ''
           export TERM=xterm-256color
-          ${pkgs.xorg.xrdb}/bin/xrdb -merge ${xresources}
-          ${pkgs.xorg.xset}/bin/xset r rate 220 30
+          ${pkgs.xrdb}/bin/xrdb -merge ${xresources}
+          ${pkgs.xset}/bin/xset r rate 220 30
           ${config.systemd.user.services.picom.serviceConfig.ExecStart} -b
         '';
       };

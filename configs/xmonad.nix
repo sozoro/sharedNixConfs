@@ -1,5 +1,5 @@
 { xmonad_hs, ... }: { config, pkgs, lib, ... }:
-{ environment.systemPackages = with pkgs; [ dmenu xorg.xprop ];
+{ environment.systemPackages = with pkgs; [ dmenu xprop ];
   services = {
     displayManager = {
       defaultSession  = "none+xmonad";

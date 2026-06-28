@@ -7,12 +7,12 @@ let
   xmonad        = assert assertMsg (xmonads != []) "Xmonad is not enabled"; head xmonads;
   xmonadStarter = "${xmonad}/share/xsessions/${noneXmonad}.desktop";
   startxmonad   = writeShellScriptBin "startxmonad" ''
-    ${xorg.xinit}/bin/startx "${config.services.displayManager.sessionData.wrapper}" "`${pkgs.gnused}/bin/sed -n -r "s/^Exec=//p" ${xmonadStarter}`"
+    ${xinit}/bin/startx "${config.services.displayManager.sessionData.wrapper}" "`${pkgs.gnused}/bin/sed -n -r "s/^Exec=//p" ${xmonadStarter}`"
   '';
 in
   { imports     = [ ./xserver.nix ./logind.nix ];
     environment = {
-      systemPackages   = [ xorg.xinit startxmonad ];
+      systemPackages   = [ xinit startxmonad ];
       shellAliases.sxm = "startxmonad";
       shellAliases.sxs = "echo use \"sxm\" instead of \"sxs\"";
     };

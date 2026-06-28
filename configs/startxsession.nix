@@ -11,12 +11,12 @@ let
       echo No WindowManager is selected.
       exit 1
     fi
-    ${xorg.xinit}/bin/startx ${config.services.displayManager.sessionData.wrapper} $wmStarter
+    ${xinit}/bin/startx ${config.services.displayManager.sessionData.wrapper} $wmStarter
   '';
 in
   { imports     = [ ./xserver.nix ./logind.nix ];
     environment = {
-      systemPackages   = [ xorg.xinit startxsession ];
+      systemPackages   = [ xinit startxsession ];
     };
     services.xserver.displayManager.startx.enable = true;
   }

@@ -19,7 +19,7 @@ let
     };
   '';
 
-  # Generated from "${pkgs.xorg.setxkbmap}/bin/setxkbmap -print"
+  # Generated from "${pkgs.setxkbmap}/bin/setxkbmap -print"
   mykbd = pkgs.writeText "mykbd" ''
     xkb_keymap {
             xkb_keycodes  { include "evdev+aliases(qwerty)" };
@@ -31,11 +31,11 @@ let
   '';
 
   compiledLayout = pkgs.runCommand "keyboard-layout" {} ''
-    ${pkgs.xorg.xkbcomp}/bin/xkbcomp -I${swapKeys} -I${compose} ${mykbd} $out
+    ${pkgs.xkbcomp}/bin/xkbcomp -I${swapKeys} -I${compose} ${mykbd} $out
   '';
 
   setupkeys = pkgs.writeShellScriptBin "setupkeys" ''
-    ${pkgs.xorg.xkbcomp}/bin/xkbcomp ${compiledLayout} $DISPLAY
+    ${pkgs.xkbcomp}/bin/xkbcomp ${compiledLayout} $DISPLAY
   '';
 
   xcompose = pkgs.writeText "XCompose" ''

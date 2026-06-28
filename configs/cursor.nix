@@ -39,7 +39,7 @@ in
     '';
   in
     ''
-      ${pkgs.xorg.xrdb}/bin/xrdb -merge ${xresources}
-      ${pkgs.xorg.xsetroot} -xcf ${xcursorPackage}/share/icons/${xcursorTheme}/cursors/X_cursor ${toString xcursorSize}
+      ${pkgs.xrdb}/bin/xrdb -merge ${xresources}
+      ${pkgs.xsetroot} -xcf ${xcursorPackage}/share/icons/${xcursorTheme}/cursors/X_cursor ${toString xcursorSize}
     '';
 }
