@@ -45,6 +45,7 @@
       zoom-us = ./configs/zoom-us.nix;
       bash = ./configs/bash.nix;
       delta = ./configs/delta.nix;
+      xdgPortal = ./configs/xdgPortal.nix;
     };
 
     packages = {
