@@ -44,6 +44,7 @@
       xsettingsd = ./configs/xsettingsd.nix;
       zoom-us = ./configs/zoom-us.nix;
       bash = ./configs/bash.nix;
+      delta = ./configs/delta.nix;
     };
 
     packages = {
